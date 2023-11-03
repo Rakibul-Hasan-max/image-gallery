@@ -2,26 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #bccfda;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-gap: 20px;
+}
+
+.gallery-body img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-main {
+  display: grid;
+  max-width: 1024px;
+  max-height: auto;
+  padding: 0 auto;
+  justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.gallery-body div:first-child {
+  grid-column: auto / span 2;
+  grid-row: auto / span 2;
+}
+.gallery-body > div {
+  border: 1px solid rgb(159, 154, 154);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.image-checkbox {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .gallery-main {
+    max-height: 800px;
+  }
 }
