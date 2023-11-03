@@ -58,3 +58,12 @@ body {
     max-height: 800px;
   }
 }
+
+@media screen and (max-width: 680px) {
+  .gallery-body{
+    display: grid;
+    grid-template-rows:repeat(auto-fit, minmax(130px,1fr));
+    grid-template-columns:repeat(auto-fit, minmax(130px,1fr));
+    grid-gap: 10px;
+  }
+}

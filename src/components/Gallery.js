@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { Images } from "../data/data";
-import icon from "../../public/images/add-icon.png";
 
 const Gallery = () => {
   // selected image store
@@ -109,11 +108,7 @@ const Gallery = () => {
           </div>
         ))}
         <div className="flex flex-col justify-center items-center  min-w-[180px] min-h-[180px]">
-          <img
-            style={{ width: "30px", height: "30px" }}
-            src={icon}
-            alt="Icon"
-          />
+          <img style={{ width: "30px", height: "30px" }} src="/images/add-icon.png" alt="Icon" />
           <p>Add Image</p>
         </div>
       </div>
