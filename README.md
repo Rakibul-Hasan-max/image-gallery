@@ -1,6 +1,6 @@
 ## Image gallery project
 
-<!-- Author: Rakibul Hasan -->
+### Author: Rakibul Hasan
 
 ## Objective:
 Create a responsive image gallery using React JS with the following features: reordering, deleting multiple images, and setting a feature image. The gallery should be visually appealing and provide a seamless user experience.
@@ -36,4 +36,4 @@ Create a responsive image gallery using React JS with the following features: re
 - Ensure responsiveness for various screen sizes.
 
 
-## Live Link:
+## Live Link: https://hasan-imagegallery.vercel.app/
