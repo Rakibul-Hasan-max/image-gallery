@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 body {
-  background-color: #bccfda;
+  background-color: #a7bdbf;
   margin: 0;
   padding: 0;
 }
 
 .gallery-body {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 20px;
 }
 
@@ -21,9 +22,9 @@ body {
 
 .gallery-main {
   display: grid;
-  max-width: 1024px;
-  max-height: auto;
-  padding: 0 auto;
+  max-width: 980px;
+  height: auto;
+  padding: 15px;
   justify-content: center;
   background-color: white;
   border-radius: 5px;
@@ -33,8 +34,9 @@ body {
   grid-column: auto / span 2;
   grid-row: auto / span 2;
 }
+
 .gallery-body > div {
-  border: 1px solid rgb(159, 154, 154);
+  border: 1px solid grey;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -53,17 +55,20 @@ body {
   cursor: pointer;
 }
 
-@media (min-width: 1024px) {
-  .gallery-main {
-    max-height: 800px;
+@media screen and (min-width: 681px) and (max-width: 980px) {
+  .gallery-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 15px;
   }
 }
 
 @media screen and (max-width: 680px) {
-  .gallery-body{
+  .gallery-body {
     display: grid;
-    grid-template-rows:repeat(auto-fit, minmax(130px,1fr));
-    grid-template-columns:repeat(auto-fit, minmax(130px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(130px, 1fr));
     grid-gap: 10px;
   }
 }

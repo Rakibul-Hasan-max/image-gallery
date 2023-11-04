@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Images } from "../data/data";
+import AddImage from "./AddImage";
 
 const Gallery = () => {
   // selected image store
@@ -60,7 +61,7 @@ const Gallery = () => {
       {/* gallery header */}
 
       {selectedImages.length === 0 ? (
-        <p className="text-xl font-bold p-5">Gallery</p>
+        <p className="text-xl font-bold py-5">Gallery</p>
       ) : (
         <div className="flex justify-between p-5">
           <div className="flex justify-center items-center">
@@ -81,36 +82,53 @@ const Gallery = () => {
 
       {/* gallery body  */}
 
-      <div className="gallery-body pb-5 px-5">
-        {images.map((image) => (
+      <div onDragOver={handleDragOver} className="gallery-body ">
+        {images?.map((image) => (
           <div
-            className="gallery-item bg-black"
+            className="gallery-item relative"
             key={image._id}
-            onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, image)}
           >
-            <img
-              onClick={() => handleImageClick(image._id)}
-              src={image.image}
-              className={` hover:opacity-[0.5]   duration-300 bg-white`}
-              alt={`Image ${image._id}`}
+            <div
+              className="w-full h-full"
               draggable="true"
               onDragStart={(e) => handleDragStart(e, image)}
-            />
+            >
+              <img
+                src={image.image}
+                className={` hover:opacity-[0.5] w-full h-full rounded duration-300 bg-white`}
+                alt={`Image ${image._id}`}
+              />
+
+              <div className="absolute w-full  h-full bg-black top-0 left-0 opacity-0  hover:opacity-50 duration-300 cursor-move">
+                <input
+                  checked={false}
+                  readOnly
+                  onClick={() => handleImageClick(image._id)}
+                  className="h-5 w-5 ml-5 mt-5 cursor-pointer"
+                  type="checkbox"
+                  name="checkbox"
+                  id={image._id}
+                />
+              </div>
+            </div>
             {selectedImages.includes(image._id) && (
               <div
-                onClick={() => handleImageClick(image._id)}
-                className={` image-checkbox w-full h-full bg-black opacity-[0.2]`}
+                className={` absolute w-full h-full bg-black top-0 left-0 opacity-30 cursor-auto`}
               >
-                <input className="w-5 h-5" type="checkbox" checked />
+                <input
+                  id={image._id}
+                  defaultChecked
+                  onClick={() => handleImageClick(image._id)}
+                  className="h-5 w-5 ml-5 mt-5 cursor-pointer"
+                  type="checkbox"
+                  name="checkbox2"
+                />
               </div>
             )}
           </div>
         ))}
-        <div className="flex flex-col justify-center items-center  min-w-[180px] min-h-[180px]">
-          <img style={{ width: "30px", height: "30px" }} src="/images/add-icon.png" alt="Icon" />
-          <p>Add Image</p>
-        </div>
+        <AddImage setImages={setImages} images={images} />
       </div>
     </div>
   );
